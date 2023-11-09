@@ -9,7 +9,7 @@ pygame.init()
 window_size = (800, 600)
 window = pygame.display.set_mode(window_size)
 pygame.display.set_caption('Cookie Clicker')
-speed = 15
+speed = 6
 speed_x = speed
 speed_y = speed
 
@@ -23,6 +23,7 @@ cookie_speed_x, cookie_speed_y = speed_x, speed_y
 
 # Устанавливаем начальный счет
 score = 0
+lastScore = 0
 
 # Основной игровой цикл
 running = True
@@ -39,6 +40,7 @@ while running:
             if cookie_x <= mouse_x <= cookie_x + cookie_image.get_width() and cookie_y <= mouse_y <= cookie_y + cookie_image.get_height():
                 score += 1
                 print(f'Score: {score}')
+                print(f'Speed: {speed}')
 
     # Двигаем cookie и проверяем, достигла ли она края окна
     cookie_x += cookie_speed_x
@@ -59,11 +61,13 @@ while running:
         cookie_speed_y *= -1
 
     # Отрисовываем cookie и счет на экране
-    window.fill((255, 255, 255))  # Заливаем фон белым цветом
+    window.fill((69, 15, 247))  # Заливаем фон белым цветом
     window.blit(cookie_image, (cookie_x, cookie_y))  # Рисуем cookie
     font = pygame.font.Font(None, 36)
-    text = font.render(f'Score: {score}', True, (0, 0, 0))
+    text = font.render(f'Score: {score}', True, (15, 247, 100))
+    textSpeed = font.render(f'Speed: {speed}', True, (247, 54, 15))
     window.blit(text, (20, 20))  # Рисуем счет
+    window.blit(textSpeed, (20, 50))  # Рисуем скорость
 
     pygame.display.flip()  # Обновляем экран
 
