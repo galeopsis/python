@@ -9,6 +9,9 @@ pygame.init()
 window_size = (800, 600)
 window = pygame.display.set_mode(window_size)
 pygame.display.set_caption('Cookie Clicker')
+speed = 15
+speed_x = speed
+speed_y = speed
 
 # Загружаем и масштабируем изображение cookie.png
 cookie_image = pygame.image.load('cookie.png')
@@ -16,7 +19,7 @@ cookie_image = pygame.transform.scale(cookie_image, (120, 120))
 
 # Устанавливаем начальные координаты в центре экрана и скорость движения cookie
 cookie_x, cookie_y = window_size[0] // 2 - cookie_image.get_width() // 2, window_size[1] // 2 - cookie_image.get_height() // 2
-cookie_speed_x, cookie_speed_y = random.choice([-1, 1]), random.choice([-1, 1])
+cookie_speed_x, cookie_speed_y = speed_x, speed_y
 
 # Устанавливаем начальный счет
 score = 0
